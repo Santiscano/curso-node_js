@@ -62,7 +62,8 @@ class Tareas {
     }
 
     /**
-     * 
+     * recibe un array con las tareas y lo almacena en _listado con la clave [tarea.id]
+     * @param {*} tareas  array con las tareas
      */
     cargarTareasFromArray( tareas = [] ) {
         
@@ -84,11 +85,11 @@ class Tareas {
     }
 
     /**
-     * convierte el objeto de instancias en un array, mas simple de manipular
+     * tomamos el array de las tareas y lo imprime mostrando cada tarea con su estado
      */
     listadoCompleto() {
         
-        console.log();
+        console.log(); // esto es como un salto de linea porque al final todo se muestra en consola
         this.listadoArr.forEach( (tarea, i) => {
 
             const idx = `${i + 1}`.green; // lista numerica 1,2,3,4,5....
@@ -102,27 +103,31 @@ class Tareas {
         });         
     }
 
+    /**
+     * recorre el array de las tareas y separamos segun el parametro las pendientes o completas
+     * @param {*} completadas boolean completadas=true, pendientes=false
+     */
     listarPendientesCompletadas( completadas = true ) {
 
         console.log();
         let contador = 0;
-        this.listadoArr.forEach( tarea => {
+        this.listadoArr.forEach( tarea => { //recorre array de tareas
 
-            const { desc, completadoEn } = tarea;
+            const { desc, completadoEn } = tarea; // desestructura info
             const estado = ( completadoEn ) 
                                 ? 'Completada'.green
                                 : 'Pendiente'.red;
-            if ( completadas ) {
+            if ( completadas ) { // si el parametro es true
                 // mostrar completadas
-                if ( completadoEn ) {
+                if ( completadoEn ) { // si la fecha no es null es porque es completa
                     contador += 1;
                     console.log(`${ (contador + '.').green } ${ desc } :: ${ completadoEn.green }`);
                 }
-            } else {
+            } else { // si el parametro es false
                 // mostrar pendientes
-                if ( !completadoEn ) {
+                if ( !completadoEn ) { // si la fecha es null esta pendiente
                     contador += 1;
-                    console.log(`${ (contador + '.').green } ${ desc } :: ${ estado }`);
+                    console.log(`${ (contador + '.').red } ${ desc } :: ${ estado }`);
                 }
             }
 

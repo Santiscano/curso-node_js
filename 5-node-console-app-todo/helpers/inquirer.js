@@ -2,6 +2,7 @@
 const inquirer = require('inquirer');
 require('colors');
 
+// lista de opciones a escoger
 const preguntas = [
     {
         type: 'list', // quiero mostrar una lista
@@ -87,7 +88,7 @@ const leerInput = async( message ) => {
             type: 'input',
             name: 'desc',
             message,
-            // funcion interna de la libreria
+            // funcion interna de la libreria, el parametro value seria el message, pero ya la funcion lo reconoce asi que por eso se le pone un nombre libre
             validate( value ) {
                 if( value.length === 0 ) {
                     return 'Por favor ingrese un valor';
@@ -101,8 +102,14 @@ const leerInput = async( message ) => {
     return desc;
 }
 
+/**
+ * con el array que recibimos lo convertimos en un choice que sera lo que se le entrega al nuevo prompt donde se solicitara la confirmacion
+ * @param {*} tareas array tareas
+ * @returns id tarea
+ */
 const listadoTareasBorrar = async( tareas = [] ) => {
 
+    // retornamos un array con objetos con value y name
     const choices = tareas.map( (tarea, i) => {
 
         const idx = `${i + 1}.`.green;
@@ -113,40 +120,55 @@ const listadoTareasBorrar = async( tareas = [] ) => {
         }
     });
 
+    // agregamos en el array como primera opcion 0 que sera cancelar
     choices.unshift({
         value: '0',
         name: '0.'.green + ' Cancelar'
     });
 
+    // configuracion del prompt
     const preguntas = [
         {
-            type: 'list',
+            type: 'list', // tipo lista es desplazable con flechas
             name: 'id',
             message: 'Borrar',
-            choices
+            choices // array de opciones
         }
     ]
 
+    // id es el value que se tomo de la lista
     const { id } = await inquirer.prompt(preguntas);
     return id;
 }
 
+/**
+ * funcion que preguntara la confirmacion de la accion
+ * @param {*} message mensaje de pregunta
+ * @returns boolean confirmacion
+ */
 const confirmar = async(message) => {
 
     const question = [
         {
-            type: 'confirm',
+            type: 'confirm', // este tipo regresa un boolean
             name: 'ok',
-            message
+            message // no necesita choice porque solo devolvera true false
         }
     ];
 
+    // este ok es el boolean
     const { ok } = await inquirer.prompt(question);
     return ok;
 }   
 
+/**
+ * toma el array de tareas y lo convierte en un prompt validando si tarea.completadoEn existe para mostrar esas como checkbox seleccionados
+ * @param {*} tareas array tareas
+ * @returns array de ids que sean true con el checkbox
+ */
 const mostrarListadoChecklist = async( tareas = [] ) => {
-
+    
+    // retornamos un array con objetos con value y name
     const choices = tareas.map( (tarea, i) => {
 
         const idx = `${i + 1}.`.green;
@@ -154,13 +176,16 @@ const mostrarListadoChecklist = async( tareas = [] ) => {
         return {
             value: tarea.id,
             name:  `${ idx } ${ tarea.desc }`,
+            // los choices inicializan todos seleccionados con esta validacion 
+            // se meustran seleccionados los que cumplan la condicion 
             checked: ( tarea.completadoEn ) ? true : false
         }
     });
 
+    // configuracion del prompt
     const pregunta = [
         {
-            type: 'checkbox',
+            type: 'checkbox', // configuracion de checkbox
             name: 'ids',
             message: 'Selecciones',
             choices

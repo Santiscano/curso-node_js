@@ -1,5 +1,6 @@
 const fs = require('fs');
 
+// se hace la referencia af
 const archivo = './db/data.json';
 
 /**
@@ -16,12 +17,13 @@ const guardarDB = ( data ) => {
  */
 const leerDB = () => {
     
-    if( !fs.existsSync(archivo) ){
+    if( !fs.existsSync(archivo) ){ // si no existe archivo termina la funcion
         return null;
     }
     
-    const info = fs.readFileSync(archivo, { encoding: 'utf-8' });
-    const data = JSON.parse( info );
+    // lee sincrono y la codificacion es para que no devuelva los bites
+    const info = fs.readFileSync(archivo, { encoding: 'utf-8' }); 
+    const data = JSON.parse( info ); // transformamos la info de string a json
 
     // console.log(data);
 
