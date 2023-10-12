@@ -135,10 +135,11 @@ class Tareas {
 
     }
 
+    
     toggleCompletadas( ids = [] ) {
-
+        // el array de ids es las que se marcaron con el checkbox es decir solo las que quiero
         ids.forEach( id => {
-
+            // a cada tarea del array le agrego la fecha
             const tarea = this._listado[id];
             if ( !tarea.completadoEn ) {
                 tarea.completadoEn = new Date().toISOString()
@@ -146,8 +147,9 @@ class Tareas {
 
         });
 
+        // proceso inverso para poner no completadas las que no vengan en el array ids
         this.listadoArr.forEach( tarea => {
-
+            // evaluamos si la tarea no esta en el array de ids y si no existe pasa
             if ( !ids.includes(tarea.id) ) {
                 this._listado[tarea.id].completadoEn = null;
             }
