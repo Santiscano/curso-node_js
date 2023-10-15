@@ -113,7 +113,7 @@ const confirmar = async(message) => {
 
     const { ok } = await inquirer.prompt(question);
     return ok;
-}   
+}
 
 const mostrarListadoChecklist = async( tareas = [] ) => {
 

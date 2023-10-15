@@ -9,24 +9,25 @@ const main = async() => {
     const busquedas = new Busquedas();
     let opt;
 
+    // ciclo infinito do while
     do{
-
+        // primer pregunta lista de opciones, buscar, historial o salir
         opt = await inquirerMenu();
-        
+        // con el valor capturado escogemos 1 caso
         switch( opt ) {
 
             case 1:
-                // Mostrar mensaje
+                // Pregunta de la ciudad a buscar
                 const termino = await leerInput('Ciudad: ');
                 
-                // Buscar los lugares
+                // Buscar los lugares - entrego como parametro la cuidad y retorna un array de objetos con id, ciudad log lat
                 const lugares = await busquedas.ciudad( termino );
                 
-                // Seleccionar el lugar
+                // de la lista que se recibe preguntamos el lugar y entregamos el numero
                 const id = await listarLugares(lugares);
-                if ( id === '0' ) continue;
+                if ( id === '0' ) continue; // si id es 0 cotinue sigue la siguiente iteracion del ciclo
 
-                const lugarSel = lugares.find( l => l.id === id );
+                const lugarSel = lugares.find( l => l.id === id ); // lugar seleccionado
 
                 // Guardar en DB
                 busquedas.agregarHistorial( lugarSel.nombre );

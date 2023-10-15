@@ -1,0 +1,4 @@
+comandos de github para crear versiones en los tags de github 
+
+1 - git tag -a v0.0.1 -m "Nombre a asignar al tag"
+2 - git push --tags

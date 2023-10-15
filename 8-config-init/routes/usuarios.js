@@ -1,4 +1,3 @@
-
 const { Router } = require('express');
 
 const { usuariosGet,
@@ -25,3 +24,13 @@ router.patch('/', usuariosPatch );
 
 
 module.exports = router;
+
+
+// 400 bad request - la ruta existe pero falto algo
+// 401 no esta autenticado
+// 403 esta protegido
+// 404 no se encontro
+// 500 info correcta del usuario pero alguna funcion revento en el servidor
+// 
+
+

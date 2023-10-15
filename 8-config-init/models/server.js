@@ -18,7 +18,7 @@ class Server {
     middlewares() {
 
         // CORS
-        this.app.use( cors() );
+        this.app.use( cors() ); // en su documentacion esta como usar la lista blanca o negra
 
         // Lectura y parseo del body
         this.app.use( express.json() );

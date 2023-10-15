@@ -1,8 +1,8 @@
 const { response, request } = require('express');
-
+// con esta importacion y asignacion en los paramtros podemos obtener todos los valores que traen ambos
 
 const usuariosGet = (req = request, res = response) => {
-
+    // ?q=hola&nombre=santiago&apikey=1234567
     const { q, nombre = 'No name', apikey, page = 1, limit } = req.query;
 
     res.json({
