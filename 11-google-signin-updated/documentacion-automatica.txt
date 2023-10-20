@@ -1,0 +1,7 @@
+1 - tener cuenta de postman 
+2 - al proyecto los 3 puntos y view documentation 
+3 - language escogemos el que se quiera "javascript fetch o node axios son las opciones mas comdas para mi lenguaje"
+4 - tocamos el engranaje si se quiere modificar detalles 
+5 - al lado derecho hay un icono de globo que dice publicar 
+6 - en el menu izquierdo en Content - configuramos a gusto y al final dice publish collection 
+7 - ahi entrega la url que se usara 

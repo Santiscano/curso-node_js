@@ -1,0 +1,19 @@
+
+URL PARA DOCUMENTACION DE GOOGLE
+https://developers.google.com/identity/gsi/web/guides/overview?hl=es-419
+
+ir a configuraciones y click en la opcion 1 consola google API 
+https://accounts.google.com/v3/signin/confirmidentifier?authuser=0&continue=https%3A%2F%2Fconsole.cloud.google.com%2Fapis%3Fhl%3Des-419&followup=https%3A%2F%2Fconsole.cloud.google.com%2Fapis%3Fhl%3Des-419&hl=es-419&ifkv=AVQVeyxRuKnq1_9I3RvHMxVCmcW2G8-0p0fEQIn4MLuOGpZr7z2j_17CgJt37az4z1qbzifCvPVx&osid=1&passive=1209600&service=cloudconsole&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-737319229%3A1697346784205782&theme=glif
+
+
+una vez en google cloud apis
+https://console.cloud.google.com/projectselector2/apis/dashboard?hl=es-419&pli=1&supportedpurview=project
+
+- vamos a seleccionar un proyecto o crear
+- pantalla de consentimiento hay que configurarla
+- credenciales seleccionamos tipo aplicacion - origenes para autorizacion es decir url del dominio frontend 
+- con los 2 codigos que recibimos guardamos el id de cliente en variables de entorno 
+
+
+- EJEMPLO MOSTRAR EL BOTON DE GOOGLE 
+https://developers.google.com/identity/gsi/web/guides/display-button?hl=es-419

@@ -1,4 +1,8 @@
+// https://www.youtube.com/watch?v=_oHByo8tiEY&ab_channel=Fireship
+// ejemplo de como crear una consola mas colorida e interactiva
+
 require('colors');
+
 // const { mostrarMenu, pausa } = require('./helpers/mensajes')
 
 // ESTE ERA UN EJEMPLO MANUAL
